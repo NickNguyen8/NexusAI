@@ -1,5 +1,5 @@
 {
-  "name": "NexusAI Workspace",
+  "name": "AIHub Workspace",
   "description": "A modular AI workspace featuring a sidebar navigation, multiple agent applications (Chat, Coder, Creative), and seamless Gemini integration.",
   "requestFramePermissions": []
 }

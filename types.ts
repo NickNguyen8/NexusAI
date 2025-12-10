@@ -1,3 +1,4 @@
+
 export enum Role {
   USER = 'user',
   MODEL = 'model',
@@ -16,22 +17,42 @@ export enum AppType {
   CODE_ASSISTANT = 'code_assistant',
   CREATIVE_WRITER = 'creative_writer',
   DATA_ANALYST = 'data_analyst',
-  IMAGE_GENERATOR = 'image_generator' // Placeholder for future expansion
+  IMAGE_GENERATOR = 'image_generator',
+  VIDEO_GENERATOR = 'video_generator',
+  LANGUAGE_TUTOR = 'language_tutor'
 }
 
 export interface AIApp {
-  id: AppType;
+  id: AppType | string; // Allow string for custom apps
   name: string;
   description: string;
   icon: string;
   systemInstruction: string;
   themeColor: string;
+  welcomeMessage?: string; // Specific message shown in empty chat state
+  examplePrompts?: string[]; // Suggestions to show in empty state
 }
 
 export interface ChatSession {
   id: string;
-  appId: AppType;
+  appId: AppType | string;
   title: string;
   messages: Message[];
   createdAt: number;
 }
+
+export type AuthProvider = 'google' | 'apple' | 'microsoft';
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  avatar?: string;
+  provider: AuthProvider;
+  plan: 'free' | 'pro' | 'max' | 'payo';
+}
+
+export type Language = 'en' | 'vi';
+
+// Global declaration for Google Identity Services
+declare var google: any;
