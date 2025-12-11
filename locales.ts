@@ -48,8 +48,8 @@ export const TRANSLATIONS = {
       welcome: "Welcome to AIHub",
       subtitle: "Sign in to save your chat history, create custom agents, and upgrade your plan.",
       google: "Continue with Google",
-      apple: "Continue with Apple",
       microsoft: "Continue with Microsoft",
+      facebook: "Continue with Facebook",
       agreement: "By continuing, you agree to our Terms of Service and Privacy Policy.",
       loading: "Signing in...",
       success: "Success!"
@@ -116,8 +116,8 @@ export const TRANSLATIONS = {
       welcome: "Chào mừng đến với AIHub",
       subtitle: "Đăng nhập để lưu lịch sử, tạo trợ lý tùy chỉnh và nâng cấp gói dịch vụ.",
       google: "Tiếp tục với Google",
-      apple: "Tiếp tục với Apple",
       microsoft: "Tiếp tục với Microsoft",
+      facebook: "Tiếp tục với Facebook",
       agreement: "Bằng cách tiếp tục, bạn đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư.",
       loading: "Đang đăng nhập...",
       success: "Thành công!"

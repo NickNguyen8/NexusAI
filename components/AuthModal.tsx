@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { X, Loader2 } from 'lucide-react';
 import { AuthProvider, Language } from '../types';
 import { TRANSLATIONS } from '../locales';
@@ -14,6 +15,13 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin, languag
   const [isLoading, setIsLoading] = useState<AuthProvider | null>(null);
   const t = TRANSLATIONS[language].auth;
 
+  // Reset loading state when the modal is closed/opened to prevent stuck spinners
+  useEffect(() => {
+    if (!isOpen) {
+      setIsLoading(null);
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleLoginClick = async (provider: AuthProvider) => {
@@ -27,6 +35,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin, languag
       setIsLoading(null);
     }
   };
+
+  const buttonBaseClass = "w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-all font-medium text-gray-700 dark:text-white bg-white dark:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed";
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]">
@@ -54,7 +64,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin, languag
             <button 
               onClick={() => handleLoginClick('google')}
               disabled={isLoading !== null}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-all font-medium text-gray-700 dark:text-white bg-white dark:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed group"
+              className={buttonBaseClass}
             >
               {isLoading === 'google' ? (
                 <Loader2 size={20} className="animate-spin text-gray-500" />
@@ -71,20 +81,20 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin, languag
               )}
             </button>
 
-            {/* Apple */}
+            {/* Facebook */}
             <button 
-               onClick={() => handleLoginClick('apple')}
+               onClick={() => handleLoginClick('facebook')}
                disabled={isLoading !== null}
-               className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+               className={buttonBaseClass}
             >
-              {isLoading === 'apple' ? (
-                <Loader2 size={20} className="animate-spin text-white" />
+              {isLoading === 'facebook' ? (
+                <Loader2 size={20} className="animate-spin text-gray-500" />
               ) : (
                 <>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 384 512">
-                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 79.4c14.2 39.6 47.5 90.4 82.2 91 25.5.4 43-16.1 66.5-16.1 23 0 43.1 16.4 69.8 16.1 31.8-.4 63.6-50.1 79.3-75.1-66.7-27-81.6-96.1-81.6-116.5zM205 100c14.5-17.4 30.2-30.8 51.5-31.5 1.5 18.2-3.8 38.8-16.6 52.7-13.6 15.1-32.8 29.8-52.9 29.8-1.5-19.9 4.3-39.2 18-51z"/>
+                  <svg className="w-5 h-5" viewBox="0 0 24 24">
+                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.647 4.504-4.647 1.3 0 2.67.232 2.67.232v2.933h-1.504c-1.49 0-1.955.925-1.955 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/>
                   </svg>
-                  <span>{t.apple}</span>
+                  <span>{t.facebook}</span>
                 </>
               )}
             </button>
@@ -93,7 +103,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin, languag
             <button 
                onClick={() => handleLoginClick('microsoft')}
                disabled={isLoading !== null}
-               className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-all font-medium text-gray-700 dark:text-white bg-white dark:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+               className={buttonBaseClass}
             >
               {isLoading === 'microsoft' ? (
                 <Loader2 size={20} className="animate-spin text-gray-500" />

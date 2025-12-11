@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import ChatInterface from './components/ChatInterface';
@@ -32,6 +33,11 @@ function App() {
   // Apps State (Merged System + Custom)
   const [customApps, setCustomApps] = useState<AIApp[]>([]);
   const [displayedApps, setDisplayedApps] = useState<AIApp[]>([]);
+
+  // Initialize Auth Service (MSAL etc)
+  useEffect(() => {
+     authService.initialize();
+  }, []);
 
   // Detect System Language on Mount
   useEffect(() => {
@@ -253,7 +259,7 @@ function App() {
         onSetLanguage={handleSetLanguage}
       />
 
-      <main className="flex-1 flex flex-col h-full relative w-full shadow-2xl rounded-tl-2xl overflow-hidden bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 transition-colors duration-200">
+      <main className="flex-1 flex flex-col h-full relative w-full shadow-2xl rounded-tl-2xl overflow-hidden bg-gray-50 dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 transition-colors duration-200">
         {view === 'library' && (
            <>
               {/* Mobile Sidebar Toggle for Library View */}

@@ -41,7 +41,7 @@ export interface ChatSession {
   createdAt: number;
 }
 
-export type AuthProvider = 'google' | 'apple' | 'microsoft';
+export type AuthProvider = 'google' | 'microsoft' | 'facebook';
 
 export interface User {
   id: string;
@@ -56,3 +56,11 @@ export type Language = 'en' | 'vi';
 
 // Global declaration for Google Identity Services
 declare var google: any;
+// Global declaration for Facebook SDK
+declare var FB: any;
+// Global declaration for Microsoft Authentication Library
+declare var msal: any;
+
+export interface Window {
+    fbAsyncInit: () => void;
+}

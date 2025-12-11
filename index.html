@@ -3,9 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AIHub Workspace</title>
+    <title>AIHub – AI for Everyone</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script src="https://alcdn.msauth.net/browser/2.34.0/js/msal-browser.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
@@ -80,5 +82,16 @@
 </head>
   <body>
     <div id="root"></div>
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '742514418258244',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v19.0'
+        });
+      };
+    </script>
   </body>
 </html>
